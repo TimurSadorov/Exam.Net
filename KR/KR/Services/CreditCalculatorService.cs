@@ -41,20 +41,13 @@ public class CreditCalculatorService
     }
 
     private async Task<int> GetScoreByCriminalRecords(
-        bool isCriminalRecorded,
+        bool isJudging,
         FullNameDto fullName,
         PassportDetails passportDetails)
     {
-        if (isCriminalRecorded)
-        {
-            var isCriminal = await _criminalRecordInformationService.IsCriminal(fullName, passportDetails);
-            if (isCriminal)
-            {
-                return 0;
-            }
-        }
-
-        return 15;
+        if (isJudging) return 0;
+        var isCriminal = await _criminalRecordInformationService.IsCriminal(fullName, passportDetails);
+        return isCriminal ? 0 : 15;
     }
 
     private int GetEmploymentScores(EmploymentType employmentType, int age)
