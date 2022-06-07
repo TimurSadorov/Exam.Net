@@ -32,8 +32,7 @@ function FormForCredit(){
     const notificationAboutCredit = useModalWindow();
     
     function calculateCredit(){
-        axios.post("credit/text").then(response => {
-            alert("Пришел");
+        axios.post("credit/calculate", formInfo.form.current).then(response => {
             let responseData = response.data;
             if (responseData.isApproved){
                 notificationAboutCredit.setMessageText(`Кредит одобрен! Баллы: ${responseData.scores}.
@@ -43,7 +42,6 @@ function FormForCredit(){
             }
 
             notificationAboutCredit.setMessageIsShow(true);
-            formInfo.resetValueToInitial();
         });
     }
     

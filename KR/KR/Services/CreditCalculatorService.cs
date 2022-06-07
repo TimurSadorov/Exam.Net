@@ -86,8 +86,8 @@ public class CreditCalculatorService
         return informationAboutPledge switch
         {
             InformationAboutPledge.None => 0,
-            InformationAboutPledge.CarAgeLessThanThree => 3,
-            InformationAboutPledge.CarAgeMoreThanThree => 8,
+            InformationAboutPledge.CarAgeLessThanThree => 8,
+            InformationAboutPledge.CarAgeMoreThanThree => 3,
             InformationAboutPledge.Guarantee => 12,
             InformationAboutPledge.Realty => 14,
             _ => 0
